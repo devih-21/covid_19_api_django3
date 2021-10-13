@@ -13,8 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import whitenoise
 
-prod_db  =  dj_database_url.config(conn_max_age=500)DATABASES
+prod_db  =  dj_database_url.config(conn_max_age=500)
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +33,7 @@ SECRET_KEY = 'django-insecure-&%wx=5glfr(_hu5+sy5)uno@f=^kg%5kq7w)$1t)nbi(pd%3x1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*.herokuapp.com']
+ALLOWED_HOSTS = ['*.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -92,12 +95,12 @@ WSGI_APPLICATION = 'covid_19_api_django3.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 DATABASES['default'].update(prod_db)
 
