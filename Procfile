@@ -1,0 +1,1 @@
+web: gunicorn covid_19_api_django3.wsgi --log-file -
